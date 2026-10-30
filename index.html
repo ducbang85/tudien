@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>TechViet – Từ điển thuật ngữ Anh – Việt</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;700;800&display=swap">
+<style>
+:root{--bg:#F3F8FB;--surf:#fff;--ink:#0C2A44;--mute:#5B7287;--line:#D8E4EC;--blue:#0B5FA5;--teal:#0E9F94;--tealbg:#DDF4F1;--bluebg:#E3EFF9;--warn:#B4540A;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0A1822;--surf:#102534;--ink:#E6F1F8;--mute:#93AABB;--line:#1E3A50;--blue:#5DB0F0;--teal:#3DD0C3;--tealbg:#0F3A3D;--bluebg:#12324D;--warn:#F0A25C}}
+:root[data-theme="dark"]{--bg:#0A1822;--surf:#102534;--ink:#E6F1F8;--mute:#93AABB;--line:#1E3A50;--blue:#5DB0F0;--teal:#3DD0C3;--tealbg:#0F3A3D;--bluebg:#12324D;--warn:#F0A25C;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px);height:100%}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.55 "Be Vietnam Pro",system-ui,sans-serif}
+button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:3px solid var(--teal);outline-offset:2px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 16px 48px}
+header.top{background:linear-gradient(135deg,#0B3F73,#0A7F86);color:#fff;padding:22px 0 64px}
+.brand{display:flex;align-items:center;gap:12px;justify-content:space-between}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:24px}
+.logo svg{width:38px;height:38px}
+.logo small{display:block;font-weight:400;font-size:13px;opacity:.85}
+.tools{display:flex;gap:8px}
+.chip{border:1px solid rgba(255,255,255,.4);background:rgba(255,255,255,.12);color:#fff;border-radius:999px;padding:7px 14px;font-size:14px}
+.search{margin:-34px auto 0;max-width:1040px;padding:0 16px;position:relative}
+.search input{width:100%;padding:17px 20px 17px 52px;font:inherit;font-size:17px;border:2px solid var(--line);border-radius:16px;background:var(--surf);color:var(--ink);box-shadow:0 8px 24px rgba(11,63,115,.15)}
+.search svg{position:absolute;left:34px;top:18px;width:22px;height:22px;stroke:var(--mute)}
+.suggest{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 4px}
+.suggest button,.pill{border:1px solid var(--line);background:var(--surf);border-radius:999px;padding:6px 14px;font-size:14px}
+.pill[aria-pressed=true]{background:var(--blue);border-color:var(--blue);color:#fff}
+:root:not([data-theme="light"]) .pill[aria-pressed=true]{color:#06202F}
+.grades{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0}
+.grade{text-align:left;border:2px solid var(--line);background:var(--surf);border-radius:16px;padding:16px}
+.grade b{display:block;font-size:20px}
+.grade span{color:var(--mute);font-size:14px}
+.grade[aria-pressed=true]{border-color:var(--teal);background:var(--tealbg)}
+.g10 b{color:var(--blue)}.g11 b{color:var(--teal)}.g12 b{color:var(--warn)}
+.row{display:grid;grid-template-columns:1.3fr 1fr;gap:16px}
+.card{background:var(--surf);border:1px solid var(--line);border-radius:16px;padding:18px}
+h2{font-size:18px;margin:0 0 12px}
+.today{border-left:6px solid var(--teal)}
+.today .vi{font-size:26px;font-weight:800;color:var(--blue)}
+.today .en{font-size:20px;font-weight:500}
+.ipa{color:var(--mute);font-family:"Segoe UI","Noto Sans",sans-serif}
+.btns{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.btn{border:1px solid var(--line);background:var(--bluebg);border-radius:10px;padding:8px 14px;font-weight:500}
+.btn.main{background:var(--blue);border-color:var(--blue);color:#fff}
+:root:not([data-theme="light"]) .btn.main{color:#06202F}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin:22px 0 12px;align-items:center}
+.filters select{font:inherit;padding:7px 10px;border:1px solid var(--line);border-radius:10px;background:var(--surf);color:var(--ink)}
+.list{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px}
+.term{display:flex;gap:12px;text-align:left;width:100%;border:1px solid var(--line);background:var(--surf);border-radius:14px;padding:14px}
+.term:hover{border-color:var(--teal)}
+.ic{flex:none;width:46px;height:46px;border-radius:12px;background:var(--bluebg);display:grid;place-items:center;font-size:24px}
+.term .vi{font-weight:700}.term .en{color:var(--blue);font-weight:500}
+.tag{display:inline-block;font-size:12px;border-radius:6px;padding:1px 8px;background:var(--tealbg);margin-top:4px}
+.empty{padding:28px;text-align:center;color:var(--mute);grid-column:1/-1}
+.quiz .opt{display:block;width:100%;text-align:left;margin:8px 0;border:1px solid var(--line);background:var(--surf);border-radius:10px;padding:10px 14px}
+.opt.ok{background:var(--tealbg);border-color:var(--teal)}.opt.bad{border-color:var(--warn);background:var(--bluebg)}
+dialog{border:0;border-radius:20px;padding:0;max-width:680px;width:calc(100% - 24px);background:var(--surf);color:var(--ink);max-height:92%;overflow:auto}
+dialog::backdrop{background:rgba(5,20,32,.6)}
+.dh{padding:22px;background:linear-gradient(135deg,#0B3F73,#0A7F86);color:#fff}
+.dh .vi{font-size:28px;font-weight:800;line-height:1.2}
+.dh .en{font-size:20px}.dh .ipa{color:#CDEFF0}
+.db{padding:6px 22px 22px}
+.db h3{font-size:15px;margin:18px 0 4px;color:var(--blue)}
+.db p{margin:0}
+.fig{display:flex;gap:14px;align-items:center;background:var(--bluebg);border-radius:12px;padding:12px;margin-top:6px}
+.fig svg{width:96px;height:72px;flex:none}
+.fig figcaption{font-size:14px;color:var(--mute)}
+.ex{border-left:4px solid var(--teal);padding-left:12px}
+.note{font-size:13px;color:var(--mute);margin-top:22px}
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 18px;border-radius:999px;font-size:14px;opacity:0;pointer-events:none;transition:opacity .2s}
+.toast.on{opacity:1}
+@media(max-width:720px){.row{grid-template-columns:1fr}.grades{gap:8px}.grade{padding:12px}.grade b{font-size:17px}.grade span{display:none}.chip.hide{display:none}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+ <div class="brand">
+  <div class="logo">
+   <svg viewBox="0 0 40 40" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="20" cy="20" r="6"/><path d="M20 4v6M20 30v6M4 20h6M30 20h6M9 9l4 4M27 27l4 4M31 9l-4 4M13 27l-4 4"/></svg>
+   <div>TechViet<small>Từ điển thuật ngữ Anh – Việt · Công nghệ THPT</small></div>
+  </div>
+  <div class="tools"><button class="chip" id="favBtn">♥ Yêu thích <span id="favN">0</span></button><button class="chip hide" id="themeBtn">Sáng/Tối</button></div>
+ </div>
+</div></header>
+
+<div class="search">
+ <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>
+ <input id="q" type="search" placeholder="Nhập thuật ngữ tiếng Việt hoặc tiếng Anh để tra cứu..." aria-label="Tra cứu thuật ngữ" autocomplete="off">
+</div>
+
+<main class="wrap">
+ <div class="suggest" id="sug"></div>
+
+ <div class="grades" id="grades">
+  <button class="grade g10" data-g="10" aria-pressed="false"><b>Công nghệ 10</b><span>Thiết kế, bản vẽ kĩ thuật</span></button>
+  <button class="grade g11" data-g="11" aria-pressed="false"><b>Công nghệ 11</b><span>Cơ khí, động cơ, truyền động</span></button>
+  <button class="grade g12" data-g="12" aria-pressed="false"><b>Công nghệ 12</b><span>Điện, điện tử, điều khiển</span></button>
+ </div>
+
+ <div class="row">
+  <section class="card today" id="today" aria-label="Học thuật ngữ mỗi ngày"></section>
+  <section class="card quiz" id="quiz" aria-label="Luyện tập"></section>
+ </div>
+
+ <div class="filters">
+  <button class="pill" data-g="all" aria-pressed="true">Tất cả khối</button>
+  <select id="topic" aria-label="Chủ đề"></select>
+  <select id="level" aria-label="Mức độ"><option value="">Mọi mức độ</option><option>Cơ bản</option><option>Nâng cao</option></select>
+  <select id="letter" aria-label="Chữ cái đầu"></select>
+  <span id="count" class="ipa" role="status"></span>
+ </div>
+ <div class="list" id="list"></div>
+ <p class="note">Dữ liệu mẫu để minh họa giao diện. Cần đối chiếu chương trình GDPT 2018, bộ sách giáo khoa nhà trường dùng và yêu cầu cần đạt trước khi gán thuật ngữ vào từng bài học.</p>
+</main>
+
+<dialog id="dlg" aria-labelledby="dvi"></dialog>
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+const D=[
+{g:10,t:"Bản vẽ kĩ thuật",ic:"📐",vi:"Bản vẽ kĩ thuật",en:"technical drawing",ipa:"/ˈteknɪkl ˈdrɔːɪŋ/",pos:"cụm danh từ",lv:"Cơ bản",lesson:"Bài: Tiêu chuẩn trình bày bản vẽ kĩ thuật",def:"Tài liệu kĩ thuật trình bày thông tin về hình dạng, kích thước và yêu cầu của sản phẩm bằng các hình vẽ và kí hiệu theo quy ước thống nhất.",endef:"A drawing that shows the shape, size and requirements of a product using standard symbols.",ex:"The engineer checked the technical drawing before production.",exvi:"Kĩ sư kiểm tra bản vẽ kĩ thuật trước khi sản xuất.",app:"Thợ cơ khí đọc bản vẽ để gia công chi tiết đúng kích thước.",rel:["Tỉ lệ","Kích thước","Hình chiếu vuông góc"],syn:"engineering drawing",src:"TCVN 7284 (nét vẽ, khổ giấy); SGK Công nghệ 10"},
+{g:10,t:"Bản vẽ kĩ thuật",ic:"📏",vi:"Hình chiếu vuông góc",en:"orthographic projection",ipa:"/ˌɔːθəˈɡræfɪk prəˈdʒekʃn/",pos:"cụm danh từ",lv:"Cơ bản",lesson:"Bài: Hình chiếu vuông góc",def:"Phương pháp biểu diễn vật thể bằng các hình chiếu trên những mặt phẳng vuông góc với nhau (hình chiếu đứng, bằng, cạnh).",endef:"A way of showing an object in several views on perpendicular planes.",ex:"An orthographic projection shows the front, top and side views.",exvi:"Hình chiếu vuông góc thể hiện hình chiếu đứng, bằng và cạnh.",app:"Trình bày chi tiết máy trên bản vẽ chế tạo.",rel:["Hình chiếu trục đo","Bản vẽ kĩ thuật"],syn:"orthogonal projection",src:"SGK Công nghệ 10; ISO 5456"},
+{g:10,t:"Bản vẽ kĩ thuật",ic:"🧊",vi:"Hình chiếu trục đo",en:"axonometric projection",ipa:"/ˌæksənəˈmetrɪk prəˈdʒekʃn/",pos:"cụm danh từ",lv:"Nâng cao",lesson:"Bài: Hình chiếu trục đo",def:"Hình biểu diễn không gian của vật thể trên một mặt phẳng, giúp quan sát được cả ba chiều cùng lúc.",endef:"A single-view drawing that shows an object's three dimensions together.",ex:"An axonometric projection gives a 3D impression of the part.",exvi:"Hình chiếu trục đo tạo cảm giác ba chiều cho chi tiết.",app:"Hình minh họa trong hướng dẫn lắp ráp đồ nội thất.",rel:["Hình chiếu vuông góc"],syn:"isometric drawing (một dạng)",note:"“Isometric” là một loại hình chiếu trục đo đều.",src:"SGK Công nghệ 10"},
+{g:10,t:"Bản vẽ kĩ thuật",ic:"↔️",vi:"Kích thước",en:"dimension",ipa:"/daɪˈmenʃn/",pos:"danh từ",lv:"Cơ bản",lesson:"Bài: Ghi kích thước",def:"Giá trị số đo của các yếu tố trên chi tiết (chiều dài, đường kính, chiều cao...) được ghi trên bản vẽ.",endef:"A measurement of length, width, height or diameter shown on a drawing.",ex:"Check every dimension against the drawing.",exvi:"Hãy kiểm tra mọi kích thước theo bản vẽ.",app:"Đo bằng thước cặp để kiểm tra chi tiết sau gia công.",rel:["Tỉ lệ","Dung sai"],syn:"size",src:"TCVN 7583"},
+{g:10,t:"Thiết kế kĩ thuật",ic:"💡",vi:"Quy trình thiết kế",en:"design process",ipa:"/dɪˈzaɪn ˈprəʊses/",pos:"cụm danh từ",lv:"Cơ bản",lesson:"Bài: Quy trình thiết kế kĩ thuật",def:"Chuỗi các bước từ xác định vấn đề, đề xuất giải pháp, chế tạo thử, thử nghiệm đến hoàn thiện sản phẩm.",endef:"A series of steps used to turn a need into a finished product.",ex:"Testing is an important step in the design process.",exvi:"Thử nghiệm là một bước quan trọng trong quy trình thiết kế.",app:"Nhóm học sinh làm dự án STEM thiết kế mô hình tưới cây tự động.",rel:["Mô hình","Sản phẩm"],syn:"engineering design process",src:"SGK Công nghệ 10"},
+{g:11,t:"Gia công cơ khí",ic:"⚙️",vi:"Gia công cơ khí",en:"machining",ipa:"/məˈʃiːnɪŋ/",pos:"danh từ",lv:"Cơ bản",lesson:"Bài: Công nghệ gia công cơ khí",def:"Quá trình thay đổi hình dạng, kích thước phôi để tạo ra chi tiết đạt yêu cầu, như tiện, phay, bào, khoan.",endef:"Shaping a workpiece by removing material with cutting tools.",ex:"Turning and milling are common machining methods.",exvi:"Tiện và phay là các phương pháp gia công cơ khí phổ biến.",app:"Chế tạo trục, bánh răng trong xưởng cơ khí.",rel:["Tiện","Phay","Phôi"],syn:"metal cutting",src:"SGK Công nghệ 11"},
+{g:11,t:"Động cơ đốt trong",ic:"🏍️",vi:"Động cơ đốt trong",en:"internal combustion engine",ipa:"/ɪnˈtɜːnl kəmˈbʌstʃən ˈendʒɪn/",pos:"cụm danh từ",lv:"Cơ bản",lesson:"Bài: Đại cương về động cơ đốt trong",def:"Động cơ nhiệt trong đó nhiên liệu được đốt cháy ngay bên trong xi lanh để sinh công cơ học.",endef:"An engine that burns fuel inside its cylinders to produce mechanical work.",ex:"A motorbike uses a small internal combustion engine.",exvi:"Xe máy dùng động cơ đốt trong cỡ nhỏ.",app:"Xe máy, ô tô, máy phát điện chạy xăng hoặc dầu.",rel:["Xi lanh","Piston","Trục khuỷu"],syn:"IC engine",note:"Viết tắt phổ biến: ICE.",src:"SGK Công nghệ 11"},
+{g:11,t:"Cơ cấu truyền động",ic:"🔩",vi:"Cơ cấu tay quay con trượt",en:"slider-crank mechanism",ipa:"/ˈslaɪdə kræŋk ˈmekənɪzəm/",pos:"cụm danh từ",lv:"Nâng cao",lesson:"Bài: Cơ cấu biến đổi chuyển động",def:"Cơ cấu biến chuyển động quay của tay quay thành chuyển động tịnh tiến của con trượt, hoặc ngược lại.",endef:"A linkage that converts rotary motion into linear motion, or the reverse.",ex:"The slider-crank mechanism moves the piston up and down.",exvi:"Cơ cấu tay quay con trượt làm piston chuyển động lên xuống.",app:"Piston và trục khuỷu trong động cơ, máy khâu đạp chân.",rel:["Piston","Trục khuỷu"],syn:"crank-slider",src:"SGK Công nghệ 11"},
+{g:11,t:"Cơ cấu truyền động",ic:"🔗",vi:"Truyền động đai",en:"belt drive",ipa:"/belt draɪv/",pos:"cụm danh từ",lv:"Cơ bản",lesson:"Bài: Truyền chuyển động",def:"Cơ cấu truyền chuyển động quay giữa hai trục nhờ dây đai mắc qua các bánh đai.",endef:"A drive that transmits rotation between shafts using a belt and pulleys.",ex:"A belt drive is quiet but may slip under heavy load.",exvi:"Truyền động đai êm nhưng có thể trượt khi tải nặng.",app:"Máy xay xát, máy khoan bàn, quạt công nghiệp.",rel:["Tỉ số truyền","Truyền động xích"],syn:"belt transmission",src:"SGK Công nghệ 11"},
+{g:11,t:"Vật liệu cơ khí",ic:"🧱",vi:"Hợp kim",en:"alloy",ipa:"/ˈælɔɪ/",pos:"danh từ",lv:"Cơ bản",lesson:"Bài: Vật liệu cơ khí",def:"Vật liệu được tạo từ kim loại cơ bản và các nguyên tố khác để cải thiện tính chất như độ cứng, độ bền, chống ăn mòn.",endef:"A metal made by combining two or more elements.",ex:"Steel is an alloy of iron and carbon.",exvi:"Thép là hợp kim của sắt và cacbon.",app:"Khung xe đạp bằng hợp kim nhôm.",rel:["Thép","Gang"],syn:"metal alloy",src:"SGK Công nghệ 11"},
+{g:12,t:"Linh kiện điện tử",ic:"🟫",vi:"Điện trở",en:"resistor",ipa:"/rɪˈzɪstə/",pos:"danh từ",lv:"Cơ bản",lesson:"Bài: Điện trở, tụ điện, cuộn cảm",def:"Linh kiện điện tử thụ động dùng để cản trở dòng điện; đơn vị đo là ôm (Ω).",endef:"A component that limits the flow of electric current.",ex:"Use a resistor to protect the LED.",exvi:"Dùng một điện trở để bảo vệ đèn LED.",app:"Hạn dòng cho LED trong mạch báo hiệu.",rel:["Tụ điện","Cuộn cảm","Định luật Ôm"],syn:"—",src:"SGK Công nghệ 12"},
+{g:12,t:"Linh kiện điện tử",ic:"🔋",vi:"Tụ điện",en:"capacitor",ipa:"/kəˈpæsɪtə/",pos:"danh từ",lv:"Cơ bản",lesson:"Bài: Điện trở, tụ điện, cuộn cảm",def:"Linh kiện tích trữ năng lượng điện trường; đơn vị điện dung là farad (F).",endef:"A component that stores electrical energy in an electric field.",ex:"A capacitor smooths the output voltage.",exvi:"Tụ điện làm phẳng điện áp đầu ra.",app:"Lọc nguồn trong bộ sạc điện thoại.",rel:["Điện trở","Mạch chỉnh lưu"],syn:"condenser (cũ)",src:"SGK Công nghệ 12"},
+{g:12,t:"Linh kiện điện tử",ic:"🌀",vi:"Cuộn cảm",en:"inductor",ipa:"/ɪnˈdʌktə/",pos:"danh từ",lv:"Nâng cao",lesson:"Bài: Điện trở, tụ điện, cuộn cảm",def:"Linh kiện gồm dây dẫn quấn thành cuộn, tích trữ năng lượng từ trường; đơn vị là henry (H).",endef:"A coil that stores energy in a magnetic field.",ex:"An inductor resists sudden changes in current.",exvi:"Cuộn cảm cản trở sự thay đổi đột ngột của dòng điện.",app:"Mạch lọc nguồn, biến áp nhỏ.",rel:["Tụ điện"],syn:"coil, choke",src:"SGK Công nghệ 12"},
+{g:12,t:"Linh kiện bán dẫn",ic:"▶️",vi:"Điốt",en:"diode",ipa:"/ˈdaɪəʊd/",pos:"danh từ",lv:"Cơ bản",lesson:"Bài: Điốt và tranzito",def:"Linh kiện bán dẫn có hai cực, chủ yếu cho dòng điện đi theo một chiều.",endef:"A two-terminal device that mainly lets current flow in one direction.",ex:"A diode blocks reverse current.",exvi:"Điốt chặn dòng điện ngược.",app:"Chỉnh lưu dòng điện xoay chiều thành một chiều.",rel:["Mạch chỉnh lưu","Tranzito"],syn:"—",src:"SGK Công nghệ 12"},
+{g:12,t:"Linh kiện bán dẫn",ic:"🔀",vi:"Tranzito",en:"transistor",ipa:"/trænˈzɪstə/",pos:"danh từ",lv:"Nâng cao",lesson:"Bài: Điốt và tranzito",def:"Linh kiện bán dẫn ba cực, dùng để khuếch đại tín hiệu hoặc làm khóa đóng ngắt.",endef:"A three-terminal semiconductor used to amplify signals or switch current.",ex:"A transistor can act as an electronic switch.",exvi:"Tranzito có thể đóng vai trò công tắc điện tử.",app:"Mạch khuếch đại âm thanh, mạch đóng ngắt rơle.",rel:["Điốt","Cổng logic"],syn:"BJT (loại lưỡng cực)",src:"SGK Công nghệ 12"},
+{g:12,t:"Mạch điện tử ứng dụng",ic:"〰️",vi:"Mạch chỉnh lưu",en:"rectifier circuit",ipa:"/ˈrektɪfaɪə ˈsɜːkɪt/",pos:"cụm danh từ",lv:"Cơ bản",lesson:"Bài: Mạch chỉnh lưu",def:"Mạch biến đổi dòng điện xoay chiều thành dòng điện một chiều, thường dùng điốt.",endef:"A circuit that converts alternating current into direct current.",ex:"A bridge rectifier uses four diodes.",exvi:"Mạch chỉnh lưu cầu dùng bốn điốt.",app:"Bộ nguồn của tivi, bộ sạc.",rel:["Điốt","Tụ điện"],syn:"AC–DC converter (nghĩa rộng)",src:"SGK Công nghệ 12"},
+{g:12,t:"Mạch tổ hợp",ic:"🔢",vi:"Cổng logic",en:"logic gate",ipa:"/ˈlɒdʒɪk ɡeɪt/",pos:"cụm danh từ",lv:"Nâng cao",lesson:"Bài: Mạch logic tổ hợp",def:"Mạch cơ bản thực hiện phép toán logic (AND, OR, NOT...) trên tín hiệu đầu vào nhị phân.",endef:"A basic circuit that performs a logical operation on binary inputs.",ex:"An AND gate outputs 1 only if both inputs are 1.",exvi:"Cổng AND cho ra 1 chỉ khi cả hai đầu vào bằng 1.",app:"Mạch báo động, bộ vi xử lí.",rel:["Tranzito"],syn:"—",src:"SGK Công nghệ 12"},
+{g:12,t:"Điều khiển tự động",ic:"📡",vi:"Cảm biến",en:"sensor",ipa:"/ˈsensə/",pos:"danh từ",lv:"Cơ bản",lesson:"Bài: Cảm biến trong điều khiển tự động",def:"Thiết bị phát hiện đại lượng vật lí (nhiệt độ, ánh sáng, khoảng cách...) và chuyển thành tín hiệu điện.",endef:"A device that detects a physical quantity and turns it into an electrical signal.",ex:"A light sensor turns the lamp on at night.",exvi:"Cảm biến ánh sáng bật đèn vào ban đêm.",app:"Đèn đường tự bật, cửa tự động.",rel:["Bộ điều khiển","Cơ cấu chấp hành"],syn:"transducer (nghĩa rộng)",src:"SGK Công nghệ 12"}
+];
+const $=s=>document.querySelector(s);
+const st={g:"all",q:"",topic:"",lv:"",letter:""};
+let favs=[];try{favs=JSON.parse(localStorage.getItem("tv_fav")||"[]")}catch(e){}
+const save=()=>{try{localStorage.setItem("tv_fav",JSON.stringify(favs))}catch(e){}};
+const norm=s=>s.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/đ/g,"d");
+function toast(m){const t=$("#toast");t.textContent=m;t.classList.add("on");clearTimeout(toast.h);toast.h=setTimeout(()=>t.classList.remove("on"),1800)}
+function speak(w){if(!("speechSynthesis" in window)){toast("Trình duyệt chưa hỗ trợ phát âm");return}const u=new SpeechSynthesisUtterance(w);u.lang="en-US";u.rate=.85;speechSynthesis.cancel();speechSynthesis.speak(u)}
+function filtered(){const q=norm(st.q.trim());return D.filter(x=>(st.g==="all"||x.g==st.g)&&(!st.topic||x.t===st.topic)&&(!st.lv||x.lv===st.lv)&&(!st.letter||norm(x.vi)[0]===st.letter.toLowerCase()||x.en[0].toLowerCase()===st.letter.toLowerCase())&&(!q||norm(x.vi).includes(q)||norm(x.en).includes(q)))}
+function render(){
+ const L=filtered();$("#count").textContent=L.length+" thuật ngữ";
+ $("#list").innerHTML=L.length?L.map(x=>`<button class="term" data-i="${D.indexOf(x)}"><span class="ic" aria-hidden="true">${x.ic}</span><span><span class="vi">${x.vi}</span> ${favs.includes(x.en)?"♥":""}<br><span class="en">${x.en}</span><br><span class="tag">Lớp ${x.g} · ${x.t}</span></span></button>`).join(""):`<div class="empty">Không tìm thấy thuật ngữ phù hợp. Thử bỏ bớt bộ lọc hoặc gõ từ khóa ngắn hơn.</div>`;
+ document.querySelectorAll(".grade,.pill[data-g]").forEach(b=>b.setAttribute("aria-pressed",b.dataset.g==st.g));
+ $("#favN").textContent=favs.length;
+}
+function topics(){const ts=[...new Set(D.filter(x=>st.g==="all"||x.g==st.g).map(x=>x.t))];$("#topic").innerHTML='<option value="">Mọi chủ đề</option>'+ts.map(t=>`<option>${t}</option>`).join("");$("#topic").value=ts.includes(st.topic)?st.topic:"";st.topic=$("#topic").value}
+function fig(x){return `<svg viewBox="0 0 96 72" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="8" y="8" width="80" height="56" rx="8" stroke-dasharray="4 4" opacity=".5"/><text x="48" y="46" text-anchor="middle" font-size="30" stroke="none" fill="currentColor">${x.ic}</text></svg>`}
+function open(i){const x=D[i],f=favs.includes(x.en);
+ $("#dlg").innerHTML=`<div class="dh"><div class="vi" id="dvi">${x.vi}</div><div class="en">${x.en}</div><div class="ipa">${x.ipa} · ${x.pos}</div>
+ <div class="btns"><button class="btn main" id="say">🔊 Nghe phát âm</button><button class="btn" id="fv">${f?"♥ Đã yêu thích":"♡ Lưu yêu thích"}</button></div></div>
+ <div class="db"><h3>Giải thích</h3><p>${x.def}</p>
+ <h3>Định nghĩa tiếng Anh</h3><p>${x.endef}</p>
+ <h3>Ví dụ câu</h3><div class="ex"><p><i>${x.ex}</i></p><p>${x.exvi}</p></div>
+ <h3>Hình minh họa</h3><figure class="fig" style="margin:6px 0 0">${fig(x)}<figcaption>Hình minh họa: ${x.vi} (chỗ để ảnh hoặc sơ đồ có chú thích)</figcaption></figure>
+ <h3>Ứng dụng trong đời sống, sản xuất</h3><p>${x.app}</p>
+ <h3>Khối lớp, chủ đề, bài học</h3><p>Lớp ${x.g} · ${x.t} · ${x.lesson} · Mức độ: ${x.lv}</p>
+ <h3>Thuật ngữ liên quan</h3><div class="btns" style="margin:4px 0 0">${x.rel.map(r=>`<button class="pill" data-s="${r}">${r}</button>`).join("")}</div>
+ <p style="margin-top:8px">Đồng nghĩa chuyên ngành: ${x.syn}</p>${x.note?`<p style="margin-top:8px"><b>Lưu ý cách dịch:</b> ${x.note}</p>`:""}
+ <h3>Nguồn tham khảo</h3><p>${x.src}</p>
+ <div class="btns" style="margin-top:18px"><button class="btn" id="rp">⚑ Báo lỗi / đề xuất sửa</button><button class="btn main" id="cl">Đóng</button></div></div>`;
+ $("#dlg").showModal();
+ $("#say").onclick=()=>speak(x.en);
+ $("#fv").onclick=()=>{favs=f?favs.filter(e=>e!==x.en):[...favs,x.en];save();render();open(i);toast(f?"Đã bỏ khỏi yêu thích":"Đã lưu vào yêu thích")};
+ $("#rp").onclick=()=>toast("Đã ghi nhận đề xuất chỉnh sửa (bản demo)");
+ $("#cl").onclick=()=>$("#dlg").close();
+ $("#dlg").querySelectorAll("[data-s]").forEach(b=>b.onclick=()=>{$("#dlg").close();$("#q").value=b.dataset.s;st.q=b.dataset.s;st.g="all";topics();render();window.scrollTo({top:$(".filters").offsetTop-80,behavior:"smooth"})});
+}
+function today(){const d=new Date(),x=D[(d.getFullYear()*366+d.getMonth()*31+d.getDate())%D.length],i=D.indexOf(x);
+ $("#today").innerHTML=`<h2>Học thuật ngữ mỗi ngày</h2><div class="vi">${x.vi}</div><div class="en">${x.en}</div><div class="ipa">${x.ipa}</div><p>${x.def}</p><div class="btns"><button class="btn main" id="ts">🔊 Nghe</button><button class="btn" id="tm">Xem chi tiết</button></div>`;
+ $("#ts").onclick=()=>speak(x.en);$("#tm").onclick=()=>open(i)}
+let qs;
+function quiz(){const x=D[Math.floor(Math.random()*D.length)];const o=[x,...D.filter(y=>y!==x).sort(()=>Math.random()-.5).slice(0,3)].sort(()=>Math.random()-.5);
+ $("#quiz").innerHTML=`<h2>Luyện tập nhanh</h2><p>Thuật ngữ tiếng Anh của “<b>${x.vi}</b>” là gì?</p>`+o.map((y,k)=>`<button class="opt" data-k="${k}">${y.en}</button>`).join("")+`<div class="btns"><button class="btn" id="nq">Câu khác</button></div>`;
+ $("#quiz").querySelectorAll(".opt").forEach((b,k)=>b.onclick=()=>{$("#quiz").querySelectorAll(".opt").forEach((c,j)=>{c.disabled=true;if(o[j]===x)c.classList.add("ok")});if(o[k]!==x)b.classList.add("bad");toast(o[k]===x?"Chính xác!":"Chưa đúng, đáp án: "+x.en)});
+ $("#nq").onclick=quiz}
+$("#q").oninput=e=>{st.q=e.target.value;render()};
+document.querySelectorAll(".grade,.pill[data-g]").forEach(b=>b.onclick=()=>{st.g=(st.g===b.dataset.g&&b.classList.contains("grade"))?"all":b.dataset.g;topics();render()});
+$("#topic").onchange=e=>{st.topic=e.target.value;render()};
+$("#level").onchange=e=>{st.lv=e.target.value;render()};
+$("#letter").innerHTML='<option value="">Mọi chữ cái</option>'+"ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("").map(c=>`<option>${c}</option>`).join("");
+$("#letter").onchange=e=>{st.letter=e.target.value;render()};
+$("#list").onclick=e=>{const b=e.target.closest(".term");if(b)open(+b.dataset.i)};
+$("#sug").innerHTML=["resistor","động cơ","cảm biến","hình chiếu","diode"].map(s=>`<button data-s="${s}">${s}</button>`).join("");
+$("#sug").onclick=e=>{const s=e.target.dataset.s;if(s){$("#q").value=s;st.q=s;render()}};
+$("#favBtn").onclick=()=>{if(!favs.length){toast("Chưa có thuật ngữ yêu thích");return}$("#q").value="";st.q="";const L=D.filter(x=>favs.includes(x.en));$("#list").innerHTML=L.map(x=>`<button class="term" data-i="${D.indexOf(x)}"><span class="ic">${x.ic}</span><span><span class="vi">${x.vi}</span> ♥<br><span class="en">${x.en}</span></span></button>`).join("");$("#count").textContent="Yêu thích: "+L.length;$("#list").scrollIntoView({behavior:"smooth"})};
+$("#themeBtn").onclick=()=>{const r=document.documentElement,dark=r.dataset.theme?r.dataset.theme==="dark":matchMedia("(prefers-color-scheme:dark)").matches;r.dataset.theme=dark?"light":"dark"};
+topics();render();today();quiz();
+</script>
+</body>
+</html>
